@@ -1,1 +1,2 @@
-
+1,nelson,sanchez,2,22222{ñlñflsl,2,hotmailcom,54654654654,99/99/9999,2
+2,juan,perez,10,45876805,1,gmail.com,555-11247,15/12/2002,3

@@ -66,7 +66,7 @@ public class Mantenimiento_Usuarios extends JDialog implements ActionListener,
 		tabla.setRowCount(0);
 		for (Usuario x : lista) {
 			tabla.addRow(new Object[] { x.getCodigo(), x.getNombres(),
-					x.getApellidos(), x.getDocumento(), x.getDocumento(),
+					x.getApellidos(), x.getCodigo_docum(), x.getDocumento(),
 					x.getArea(), x.getCorreo(), x.getTelefono(),
 					x.getFecha_ing(), x.getEstado() });
 		}
@@ -103,7 +103,6 @@ public class Mantenimiento_Usuarios extends JDialog implements ActionListener,
 	private JTable tabla_usuarios;
 	private JLabel lblNewLabel;
 	private JButton btnBuscar;
-
 
 	/**
 	 * Launch the application.
@@ -311,22 +310,6 @@ public class Mantenimiento_Usuarios extends JDialog implements ActionListener,
 		return Integer.parseInt(txtEstado.getText());
 	}
 
-	/*
-	 * void imprimir(){ txtS.setText(""); } void imprimir(String s){
-	 * txtS.append( s + "\n"); } void Listar(){ imprimir(); imprimir(
-	 * "Codigo \t Nombres \t Apellidos \t CodDoc \t Documento \t Area \t Correo \t Telefono \t Fecha \t Estado"
-	 * ); for(int i=0; i<a.tamaño();i++){ Usuario u=a.obtener(i);
-	 * imprimir(u.getCodigo
-	 * ()+" \t"+u.getNombres()+" \t"+u.getApellidos()+" \t"+u
-	 * .getCodigo_docum()+" \t"+
-	 * u.getDocumento()+" \t"+u.getArea()+" \t"+u.getCorreo
-	 * ()+" \t"+u.getTelefono()+" \t"+u.getFecha_ing()+" \t"+u.getEstado()); }
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
-
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnBuscar) {
 			do_btnBuscar_actionPerformed(e);
@@ -426,25 +409,27 @@ public class Mantenimiento_Usuarios extends JDialog implements ActionListener,
 			JOptionPane.showMessageDialog(null, "El usuario no existe..!!");
 		} else {
 			a.eliminar(z);
-			JOptionPane.showMessageDialog(null, "La operación se realizo con éxtio");
-		
+			JOptionPane.showMessageDialog(null,
+					"La operación se realizo con éxtio");
+
 		}
 		a.grabar();
 		mostrar_usuarios();
-		
+
 	}
-	
+
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
-		
-		int codigo=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de código"));
-		Usuario x=a.buscar(codigo);
-		
-		int fila=x.getCodigo()-1;
-		
+
+		int codigo = Integer.parseInt(JOptionPane
+				.showInputDialog("Ingrese el número de código"));
+		Usuario x = a.buscar(codigo);
+
+		int fila = x.getCodigo() - 1;
+
 		if (x == null) {
 			JOptionPane.showMessageDialog(null, "El usuario no existe..!!");
 		} else {
-			
+
 			txtCodigo.setText(tabla.getValueAt(fila, 0).toString());
 			txtNombres.setText(tabla.getValueAt(fila, 1).toString());
 			txtApellidos.setText(tabla.getValueAt(fila, 2).toString());
@@ -455,12 +440,8 @@ public class Mantenimiento_Usuarios extends JDialog implements ActionListener,
 			txtTelefono.setText(tabla.getValueAt(fila, 7).toString());
 			txtFechaIng.setText(tabla.getValueAt(fila, 8).toString());
 			txtEstado.setText(tabla.getValueAt(fila, 9).toString());
-			
+
 		}
-		
-		
-		
-		
-		
+
 	}
 }
